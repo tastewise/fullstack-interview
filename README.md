@@ -8,12 +8,21 @@ Create a simple dashboard that shows trending food ingredients and provides AI-p
 
 ### Requirements
 
+This task is divided into three parts, each with its own requirements:
+1. Create a simple Trend Dashboard with a list of trending ingredients.
+    a. Each ingredient should have a popularity, growth rate and a category.
+    b. Backend - Build the `GET /api/trends` - Returns a list of trending ingredients endpoint in your favorite backend framework.
+    c. Frontend - Display the list of trending ingredients in a table or list.
+2. Implement real-time updates for the trending ingredients.
+    b. Backend - Create a WebSocket server that pushes random popularity updates every 10 seconds.
+    c. Frontend - Display real-time updates for the trending ingredients in the respective table or list from step 1.
+3. Implement an "Analyze" button that fetches AI insight for the selected ingredient.
+    a. Backend - Build the `POST /api/trends/analyze` - Gets AI insight for a selected ingredient endpoint in your favorite backend framework.
+    b. Frontend - Add an "Analyze" button to each ingredient row that fetches AI insight for the selected ingredient and displays it.
+
 ### Backend (Node.js)
 
-1. Create two main endpoints:
-    - `GET /api/trends` - Returns a list of trending ingredients
-    - `POST /api/trends/analyze` - Gets AI insight for a selected ingredient
-2. Sample data structure (hardcode this array to save time):
+Sample data structure (hardcode this array to save time):
 
 ```jsx
 const trendData = [
@@ -31,32 +40,3 @@ const trendData = [
   },
   // Add 3-4 more items
 ];
-
-```
-
-3. Create Simple WebSocket setup for real-time updates (each update should randomize the growthRate and popularity values of the trend).
-
-```jsx
-// Simple WebSocket to push random popularity updates every 10 seconds
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({ server });
-
-wss.on('connection', (ws) => {
-  const interval = setInterval(() => {
-    const randomTrend = // implement me
-    randomTrend.popularity += // implement me
-    ws.send(JSON.stringify(randomTrend));
-  }, 10_000);
-
-  ws.on('close', () => clearInterval(interval));
-});
-
-```
-
-### Frontend (React)
-
-Create a simple dashboard with:
-
-1. A table/list showing trending ingredients
-2. Real-time popularity updates
-3. An "Analyze" button that fetches AI insight for the selected ingredient
