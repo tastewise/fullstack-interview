@@ -34,7 +34,7 @@ const trendData = [
 
 ```
 
-1. Basic WebSocket setup for real-time updates:
+3. Create Simple WebSocket setup for real-time updates (each update should randomize the growthRate and popularity values of the ingredient).
 
 ```jsx
 // Simple WebSocket to push random popularity updates every 10 seconds
@@ -43,10 +43,10 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
   const interval = setInterval(() => {
-    const randomTrend = trendData[Math.floor(Math.random() * trendData.length)];
-    randomTrend.popularity += Math.random() * 2 - 1; // Random fluctuation
+    const randomTrend = // implement me
+    randomTrend.popularity += // implement me
     ws.send(JSON.stringify(randomTrend));
-  }, 10000);
+  }, 10_000);
 
   ws.on('close', () => clearInterval(interval));
 });
@@ -60,5 +60,3 @@ Create a simple dashboard with:
 1. A table/list showing trending ingredients
 2. Real-time popularity updates
 3. An "Analyze" button that fetches AI insight for the selected ingredient
-
-Example component structure:
