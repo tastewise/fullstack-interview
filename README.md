@@ -34,7 +34,7 @@ const trendData = [
 
 ```
 
-3. Create Simple WebSocket setup for real-time updates (each update should randomize the growthRate and popularity values of the ingredient).
+3. Create Simple WebSocket setup for real-time updates (each update should randomize the growthRate and popularity values of the trend).
 
 ```jsx
 // Simple WebSocket to push random popularity updates every 10 seconds
